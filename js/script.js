@@ -1,3 +1,4 @@
+let menu = prompt("Enter task: \n Comparing Two Variables - type: '1' \n Degree Conversion - type: '2' \n Simple calculator - type: '3'");
 let varOne;
 let varTwo;
 let op;
@@ -11,7 +12,7 @@ function equalityCompare(a, b) {
 }
 
 function degreeConversion(a){
-    if (typeof a == "number") {
+    if(typeof a === 'number') {
         let tmpr = ((a-32)*5)/9;
         return tmpr;
     }else {
@@ -39,27 +40,25 @@ function basicCalc(a, b , operation) {
 
 }
 
-varOne = 'hello';
-varTwo = 'hello';
-equalityCompare(varOne, varTwo);
-varOne = 'hell';
-varTwo = 20;
-equalityCompare(varOne, varTwo);
+switch (menu) {
 
-varOne = 32;
-console.log(varOne +" Fahrenheit in Celsius is: " + degreeConversion(varOne));
-// when the variable is not a number
-varOne = '32';
-console.log(degreeConversion(varOne));
+    case '1':
+        varOne = prompt("Enter first variable: ");
+        varTwo = prompt("Enter second variable: ");
+        equalityCompare(Number(varOne), Number(varTwo));
+        break;
+    case '2':
+        varOne = prompt("Enter Fahrenheit: ");
+        console.log(Number(varOne) +" Fahrenheit in Celsius is: " + degreeConversion(Number(varOne)));
+        break;
+    case '3':
+        varOne = prompt("Enter first number: ");
+        varTwo = prompt("Enter second number: ");
+        op = prompt("Enter operator '+', '-', '*', '/'");
+        console.log(basicCalc(Number(varOne), Number(varTwo), op));
+        break;
+    default:
+        console.error("Enter valid option !!!");
+        break;
 
-varOne = 100;
-varTwo = 2;
-op = '+';
-console.log(basicCalc(varOne, varTwo, op));
-// wrong operator
-op = 'a';
-console.log(basicCalc(varOne, varTwo, op));
-// dividing 0 
-op = '/';
-varOne = 0;
-console.log(basicCalc(varOne, varTwo, op));
+}
